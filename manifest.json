@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Account & Subscription Shortcuts",
-  "version": "0.3.2",
-  "description": "Quick links to official account, billing, and subscription pages—Google, Microsoft, Apple, PayPal, streaming services, and more. No data collection; opens sites in a new tab.",
+  "version": "0.3.3",
+  "description": "Quick links to official account & subscription pages. Opens in a new tab. Local-only: language and shortcuts you add.",
   "permissions": ["storage", "windows"],
   "background": {
     "service_worker": "background.js"

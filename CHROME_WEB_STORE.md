@@ -4,6 +4,8 @@ Prepared for **Account & Subscription Shortcuts** (Manifest V3).
 
 Repository: https://github.com/mapicallo/account-subscription-shortcuts
 
+**Manifest `description`:** Chrome requires **≤ 132 characters** (UTF-8/code units as reported by the dashboard). Longer text belongs in the store’s **Detailed description** only.
+
 ---
 
 ## 1. Privacy policy URL (required)

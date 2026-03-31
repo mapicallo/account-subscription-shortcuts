@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  max-height: 560px;
+  overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f4f4f5;
+  color: #27272a;
+}
+
+.container {
+  padding: 16px 16px 12px;
+}
+
+header {
+  margin-bottom: 14px;
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.header-row > div:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.language-selector {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.language-selector .language-label {
+  font-size: 10px;
+  color: #71717a;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.language-selector select {
+  padding: 4px 8px;
+  border: 1px solid #0e7490;
+  border-radius: 6px;
+  font-size: 12px;
+  background: #fff;
+  color: #27272a;
+  cursor: pointer;
+  min-width: 92px;
+}
+
+.language-selector select:hover {
+  border-color: #155e75;
+}
+
+.language-selector select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(14, 116, 144, 0.25);
+}
+
+header h1 {
+  font-size: 17px;
+  font-weight: 600;
+  color: #18181b;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: #52525b;
+  line-height: 1.4;
+}
+
+.shortcut-section {
+  margin-bottom: 14px;
+}
+
+.shortcut-section:last-of-type {
+  margin-bottom: 10px;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #0e7490;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #e4e4e7;
+}
+
+.shortcut-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.btn-shortcut {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e4e4e7;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  background: #fff;
+  color: #18181b;
+  transition: background 0.12s ease, border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.btn-shortcut:hover {
+  background: #f0fdfa;
+  border-color: #99f6e4;
+  box-shadow: 0 2px 6px rgba(15, 118, 110, 0.08);
+}
+
+.btn-shortcut:active {
+  background: #ccfbf1;
+}
+
+.btn-shortcut:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(14, 116, 144, 0.35);
+}
+
+footer {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid #e4e4e7;
+}
+
+.note {
+  font-size: 10px;
+  color: #a1a1aa;
+  line-height: 1.45;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account &amp; Subscription Shortcuts</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-row">
+        <div>
+          <h1 data-i18n="title">Account &amp; Subscription Shortcuts</h1>
+          <p class="subtitle" data-i18n="subtitle">Official pages in a new tab—sign in on the site as usual.</p>
+        </div>
+        <div class="language-selector">
+          <label for="languageSelect" class="language-label" data-i18n="language">Language</label>
+          <select id="languageSelect" aria-label="Language">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <main id="shortcuts-root" aria-live="polite"></main>
+
+    <footer>
+      <p class="note" data-i18n="note">Shortcuts only. This extension does not access your accounts.</p>
+    </footer>
+  </div>
+  <script src="shortcuts-data.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

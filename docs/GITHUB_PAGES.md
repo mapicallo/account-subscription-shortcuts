@@ -43,6 +43,21 @@ Commit and push to `main`. With Actions, the workflow redeploys automatically.
 
 ## Troubleshooting
 
-- **404:** Confirm **Source** is correct (Actions workflow finished successfully, or branch/folder is `/root`).
-- **Workflow failed:** Check **Actions** tab logs; ensure Pages **Source** is **GitHub Actions** when using the bundled workflow.
-- **Old content:** Hard-refresh or open in a private window.
+### “There isn’t a GitHub Pages site here” / 404 on `mapicallo.github.io/account-subscription-shortcuts/...`
+
+The HTML files can exist in the repo and you will still get **404** until Pages **Build and deployment** is configured.
+
+**Fastest fix (recommended if Actions never ran):**
+
+1. GitHub repo → **Settings** → **Pages**.
+2. **Build and deployment** → **Source:** choose **Deploy from a branch** (not *None*).
+3. **Branch:** `main`, **Folder:** `/ (root)` → **Save**.
+4. Wait 1–5 minutes, then open in a private window:  
+   `https://mapicallo.github.io/account-subscription-shortcuts/privacy-en.html`  
+   and `.../privacy.html`.
+
+If you previously chose **GitHub Actions**, either complete the first deployment (approve the `github-pages` environment if asked) or switch to **Deploy from a branch** and avoid running two sources at once.
+
+- **404 after config:** Confirm **Source** is not *None*; branch is `main` and folder is `/ (root)` (or Actions job succeeded).
+- **Workflow failed:** **Actions** tab → open the failed run log.
+- **Old content:** Hard-refresh or incognito.

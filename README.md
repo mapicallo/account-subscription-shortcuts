@@ -46,7 +46,7 @@ The extension does not access your accounts—it opens URLs from the built-in li
 | `background.js` | Opens or focuses the shortcut panel window |
 | `panel.html` / `panel.js` / `panel.css` | Panel UI (floating window) and i18n |
 | `shortcuts-data.js` | Shortcut groups and URLs |
-| `icons/` | Toolbar icons (PNG) |
+| `icons/` | `icon-master.png` plus generated `icon16`–`icon128` (see script below) |
 | `docs/MVP-LINKS.md` | Human-readable MVP link table |
 | `docs/IMPLEMENTATION_PLAN.md` | Step-by-step plan |
 | `docs/GITHUB_PAGES.md` | Deploy privacy policy to Pages |
@@ -55,9 +55,11 @@ The extension does not access your accounts—it opens URLs from the built-in li
 
 ## Icons
 
-PNGs are generated with the repo script (Windows PowerShell + `System.Drawing`):
+The store/toolbar icons are produced from **`icons/icon-master.png`** (square source art). Regenerate all sizes with:
 
 ```powershell
 .\scripts\generate-icons.ps1
 ```
+
+Outputs: `icons/icon16.png` … `icon128.png`. Edit or replace `icon-master.png` if you refresh branding, then run the script again.
 

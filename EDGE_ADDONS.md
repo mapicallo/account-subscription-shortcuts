@@ -48,6 +48,20 @@ From `C:\code\pantallazos`, run:
 - [ ] Store listing text and images (logo 300×300, small promo 440×280 if required)
 - [ ] No extra permissions beyond what you declare (storage, windows)
 
+## Search terms (English)
+
+Partner Center: **up to 7 terms**, **≤30 characters** each, **≤21 words total** across all terms.
+
+Suggested set (18 words total):
+
+1. `account shortcuts`
+2. `subscription shortcuts`
+3. `billing shortcuts`
+4. `google microsoft apple`
+5. `amazon paypal netflix`
+6. `official page links`
+7. `personal link shortcuts`
+
 ## After publication
 
 Update `README.md` with the Edge Add-ons URL when you have it.

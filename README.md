@@ -6,7 +6,13 @@ Repository: https://github.com/mapicallo/account-subscription-shortcuts
 
 **License:** MIT — see `LICENSE`.
 
-**Store submission:** see `CHROME_WEB_STORE.md`. **GitHub Pages:** see `docs/GITHUB_PAGES.md`. Build production ZIP with `.\create-chrome-package.ps1`.
+**Store submission:** Chrome → `CHROME_WEB_STORE.md`. Edge (mismo paquete ZIP) → `EDGE_ADDONS.md`. **GitHub Pages:** `docs/GITHUB_PAGES.md`.
+
+Build the store ZIP (nombre incluye versión del `manifest`, p. ej. `account-subscription-shortcuts-0.3.2.zip`):
+
+```powershell
+.\create-chrome-package.ps1
+```
 
 ## GitHub Pages (Chrome Web Store privacy URL)
 
@@ -50,6 +56,8 @@ The extension does not access your accounts—it opens URLs from the built-in li
 | `docs/MVP-LINKS.md` | Human-readable MVP link table |
 | `docs/IMPLEMENTATION_PLAN.md` | Step-by-step plan |
 | `docs/GITHUB_PAGES.md` | Deploy privacy policy to Pages |
+| `CHROME_WEB_STORE.md` | Chrome Web Store listing checklist |
+| `EDGE_ADDONS.md` | Microsoft Edge Add-ons (same ZIP) |
 | `.github/workflows/pages.yml` | Pages deploy on push to `main` |
 | `index.html` | Landing on Pages (links to privacy + repo) |
 

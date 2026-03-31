@@ -169,7 +169,7 @@ Ejecutar antes del primer envío a la tienda y tras cada cambio grande de UI.
 
 1. En GitHub: **Settings → Pages** → fuente **GitHub Actions**; comprobar que despliega y abrir `privacy-en.html` en una ventana privada.  
 2. Ejecutar **Fase 5** (tabla QA) y anotar el resultado.  
-3. Generar ZIP: `.\create-chrome-package.ps1`.  
+3. Generar ZIP: `.\create-chrome-package.ps1` → `account-subscription-shortcuts-{version}.zip` (Chrome y Edge).  
 4. Hacer **capturas** de la ventana del panel (EN y ES) según `CHROME_WEB_STORE.md`.  
 5. Crear / usar ítem en **Chrome Web Store Developer Dashboard**, pegar textos, privacidad, subir ZIP.  
 6. (Opcional) Subir `1.0.0` en `manifest.json` en el commit que etiquetes como “store release”.  

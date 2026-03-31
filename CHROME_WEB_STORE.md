@@ -101,7 +101,7 @@ You can design these in Figma or similar; no bundled generator in this repo yet.
 
 ## 6. Pre-upload checklist
 
-- [ ] ZIP built with `create-chrome-package.ps1` (or equivalent) — includes `shortcuts-data.js`
+- [ ] ZIP built with `create-chrome-package.ps1` — `account-subscription-shortcuts-{version}.zip` — includes `shortcuts-data.js`
 - [ ] Privacy policy URL live and reachable without login
 - [ ] Short + detailed descriptions pasted
 - [ ] At least one screenshot (two recommended)
@@ -117,7 +117,13 @@ From the project folder:
 .\create-chrome-package.ps1
 ```
 
-This creates `account-subscription-shortcuts-chrome.zip` containing:
+The script reads **`version`** from `manifest.json` and creates:
+
+**`account-subscription-shortcuts-{version}.zip`** (e.g. `account-subscription-shortcuts-0.3.2.zip`)
+
+Use this **same file** for the **Chrome Web Store** and for **Microsoft Edge Add-ons** — see `EDGE_ADDONS.md`.
+
+The ZIP contains:
 
 - `manifest.json`
 - `background.js`

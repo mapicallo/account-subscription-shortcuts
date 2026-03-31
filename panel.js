@@ -368,6 +368,15 @@ async function init() {
   btnCancelPersonal.addEventListener('click', () => closePersonalForm());
   btnSavePersonal.addEventListener('click', () => savePersonalFromForm());
 
+  const verEl = document.getElementById('extensionVersion');
+  if (verEl) {
+    try {
+      verEl.textContent = `v${chrome.runtime.getManifest().version}`;
+    } catch {
+      verEl.textContent = '';
+    }
+  }
+
   const stored = await chrome.storage.local.get(STORAGE_LANGUAGE_KEY);
   const lang = stored[STORAGE_LANGUAGE_KEY];
   if (lang && TRANSLATIONS[lang]) {

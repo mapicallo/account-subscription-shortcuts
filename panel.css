@@ -355,3 +355,15 @@ footer {
   margin-top: 6px;
   color: #71717a;
 }
+
+.extension-version {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #f4f4f5;
+  font-size: 9px;
+  color: #d4d4d8;
+  text-align: center;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}

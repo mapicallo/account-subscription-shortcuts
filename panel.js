@@ -6,6 +6,8 @@ const TRANSLATIONS = {
     subtitle: 'Official pages in a new tab—sign in on the site as usual.',
     language: 'Language',
     note: 'Shortcuts only. This extension does not access your accounts.',
+    closeWindow: 'Close',
+    windowHint: 'Move or resize this window as you like. Shortcut links open in a new browser tab.',
     cat_accounts: 'Account hubs',
     cat_subscriptions: 'Subscriptions & payments',
     cat_shopping: 'Shopping',
@@ -25,6 +27,8 @@ const TRANSLATIONS = {
     subtitle: 'Páginas oficiales en una pestaña nueva; inicia sesión en cada sitio.',
     language: 'Idioma',
     note: 'Solo atajos. La extensión no accede a tus cuentas.',
+    closeWindow: 'Cerrar',
+    windowHint: 'Puedes mover o redimensionar esta ventana. Los enlaces se abren en una pestaña nueva del navegador.',
     cat_accounts: 'Cuentas principales',
     cat_subscriptions: 'Suscripciones y pagos',
     cat_shopping: 'Compras',
@@ -43,6 +47,7 @@ const TRANSLATIONS = {
 
 const languageSelect = document.getElementById('languageSelect');
 const shortcutsRoot = document.getElementById('shortcuts-root');
+const btnClose = document.getElementById('btnClose');
 
 let currentLang = 'en';
 
@@ -54,7 +59,7 @@ function t(key) {
 function applyTranslations() {
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     const key = el.getAttribute('data-i18n');
-    el.textContent = t(key);
+    if (t(key)) el.textContent = t(key);
   });
   document.documentElement.lang = currentLang === 'es' ? 'es' : 'en';
 }
@@ -103,6 +108,8 @@ async function changeLanguage(lang) {
 }
 
 async function init() {
+  btnClose.addEventListener('click', () => window.close());
+
   const stored = await chrome.storage.local.get(STORAGE_LANGUAGE_KEY);
   const lang = stored[STORAGE_LANGUAGE_KEY];
   if (lang && TRANSLATIONS[lang]) {

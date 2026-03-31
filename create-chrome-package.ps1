@@ -6,9 +6,10 @@ Set-Location $here
 
 $items = @(
     'manifest.json',
-    'popup.html',
-    'popup.css',
-    'popup.js',
+    'background.js',
+    'panel.html',
+    'panel.css',
+    'panel.js',
     'shortcuts-data.js',
     'icons'
 )

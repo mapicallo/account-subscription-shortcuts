@@ -17,6 +17,6 @@ Todas las URLs son **páginas oficiales** abiertas con `chrome.tabs.create`. El 
 
 ## Notas de mantenimiento
 
-- **Amazon:** incluidos `.com` (US) y `.es` (España). Otras regiones (`amazon.de`, `amazon.co.uk`, …): añadir filas en `shortcuts-data.js` y claves en `popup.js`, o un selector de región en `storage` en el futuro.
+- **Amazon:** incluidos `.com` (US) y `.es` (España). Otras regiones (`amazon.de`, `amazon.co.uk`, …): añadir filas en `shortcuts-data.js` y claves en `panel.js`, o un selector de región en `storage` en el futuro.
 - **PayPal / Netflix / Spotify:** pueden redirigir al dominio local según cookie o IP.
 - **Cambios de ruta:** los proveedores alteran URLs; actualizar `shortcuts-data.js` y publicar nueva versión si hace falta.

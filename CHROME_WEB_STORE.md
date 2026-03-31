@@ -48,7 +48,7 @@ What you get:
 
 Privacy:
 • No analytics, no remote servers from this extension
-• Only `storage` permission, for English/Spanish UI preference
+• `storage` for English/Spanish UI preference; `windows` only to open or focus the shortcut panel window (not for reading your browsing history)
 
 This extension does not cancel subscriptions or move money for you. It is a navigator to official sites only.
 ```
@@ -64,7 +64,7 @@ Incluye:
 
 Privacidad:
 • Sin analítica ni servidores propios
-• Solo permiso `storage` para el idioma (inglés/español)
+• `storage` para el idioma; `windows` solo para abrir o enfocar la ventana del panel de atajos
 
 La extensión no cancela suscripciones ni gestiona pagos por ti: solo enlaza a sitios oficiales.
 ```
@@ -76,9 +76,9 @@ La extensión no cancela suscripciones ni gestiona pagos por ti: solo enlaza a s
 **Size:** 1280×800 or 640×400 px (PNG or JPEG)
 
 **Suggested shots:**
-1. Popup in **English** showing all three sections
-2. Popup in **Spanish** (language selector visible)
-3. (Optional) One opened tab on an official account page (no personal data visible)
+1. Shortcut **panel window** in **English** (movable window, all sections visible)
+2. Same window in **Spanish** (language selector visible)
+3. (Optional) Browser tab open on an official account page (no personal data visible)
 
 ---
 
@@ -120,7 +120,8 @@ From the project folder:
 This creates `account-subscription-shortcuts-chrome.zip` containing:
 
 - `manifest.json`
-- `popup.html`, `popup.css`, `popup.js`
+- `background.js`
+- `panel.html`, `panel.css`, `panel.js`
 - `shortcuts-data.js`
 - `icons/` (all PNG sizes)
 

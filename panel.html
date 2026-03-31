@@ -4,10 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Account &amp; Subscription Shortcuts</title>
-  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="panel.css">
 </head>
 <body>
   <div class="container">
+    <div class="window-toolbar">
+      <button type="button" id="btnClose" class="btn-close" data-i18n="closeWindow">Close</button>
+    </div>
+
     <header>
       <div class="header-row">
         <div>
@@ -28,9 +32,10 @@
 
     <footer>
       <p class="note" data-i18n="note">Shortcuts only. This extension does not access your accounts.</p>
+      <p class="note note-secondary" data-i18n="windowHint">You can move and resize this window. Links open in the browser; this panel stays open until you close it.</p>
     </footer>
   </div>
   <script src="shortcuts-data.js"></script>
-  <script src="popup.js"></script>
+  <script src="panel.js"></script>
 </body>
 </html>

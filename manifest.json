@@ -1,11 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Account & Subscription Shortcuts",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Quick links to official account, billing, and subscription pages—Google, Microsoft, Apple, PayPal, streaming services, and more. No data collection; opens sites in a new tab.",
-  "permissions": ["storage"],
+  "permissions": ["storage", "windows"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
-    "default_popup": "popup.html",
     "default_title": "Account & Subscription Shortcuts",
     "default_icon": {
       "16": "icons/icon16.png",

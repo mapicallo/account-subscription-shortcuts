@@ -1,6 +1,6 @@
 /**
  * Central list of shortcut targets. Edit URLs here only (see docs/MVP-LINKS.md).
- * labelKey / categoryKey map to TRANSLATIONS in popup.js.
+ * labelKey / categoryKey map to TRANSLATIONS in panel.js.
  */
 const SHORTCUT_GROUPS = [
   {

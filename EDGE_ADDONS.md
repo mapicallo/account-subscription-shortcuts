@@ -62,6 +62,32 @@ Suggested set (18 words total):
 6. `official page links`
 7. `personal link shortcuts`
 
+## Certification notes (Partner Center, under 2,000 characters, reviewers only)
+
+Use **English** unless the portal asks otherwise. Paste and adjust the privacy URL line if needed.
+
+**English (template):**
+
+```
+HOW TO TEST (no test accounts required)
+1. Install the extension from the submitted package.
+2. Click the toolbar icon: a movable panel opens (not a classic popup).
+3. Click any built-in shortcut: a new tab opens in the BACKGROUND in Edge; the panel stays in front. Sign-in happens only on the target website if the reviewer opens that tab—no credentials are needed to verify core behavior.
+4. Optional: “Add my shortcut”—enter a name, https URL, and section, then Save; Edit and Delete work. Data stays in local extension storage only.
+
+WHAT IT DOES
+Opens user-chosen https URLs only. Does not inject into pages, collect passwords, or automate payments or subscription changes.
+
+PERMISSIONS
+• storage — UI language (EN/ES) and optional user-created shortcuts.
+• windows — open/focus the shortcut panel window only.
+
+REMOTE CODE
+None; all logic is in the packaged service worker and extension pages.
+
+PRIVACY POLICY URL: (same as in your listing)
+```
+
 ## After publication
 
 Update `README.md` with the Edge Add-ons URL when you have it.

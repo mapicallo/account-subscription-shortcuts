@@ -23,11 +23,29 @@ Sign in with a Microsoft account, register as a developer if required, then **Cr
 | Description | You can reuse English (and Spanish) copy from `CHROME_WEB_STORE.md` |
 | Screenshots | Same captures work; follow Edge’s current size requirements in the dashboard |
 
+### Graphic assets (Partner Center)
+
+Edge often asks for:
+
+| Field | Spec | File (generated next to your `pantallazos` workflow) |
+|------|------|--------------------------------------------------------|
+| **Extension logo** | 300×300 px recommended (min 128×128), 1:1 | `C:\code\pantallazos\chrome-store-ready\edge-extension-logo-300x300.png` |
+| **Small promotional icon** | 440×280 px | `C:\code\pantallazos\chrome-store-ready\promo-small-440x280.png` |
+
+From `C:\code\pantallazos`, run:
+
+```powershell
+.\make-edge-store-assets.ps1
+.\make-chrome-promo-tiles.ps1
+```
+
+(`make-chrome-promo-tiles.ps1` creates the 440×280 tile if missing; `make-edge-store-assets.ps1` builds the 300×300 logo from `account-subscription-shortcuts\icons\icon-master.png`.)
+
 ## Checklist
 
 - [ ] ZIP named with version (from script output)
 - [ ] Privacy URL reachable
-- [ ] Store listing text and images
+- [ ] Store listing text and images (logo 300×300, small promo 440×280 if required)
 - [ ] No extra permissions beyond what you declare (storage, windows)
 
 ## After publication

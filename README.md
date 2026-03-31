@@ -26,8 +26,9 @@ Full steps and alternatives: `docs/GITHUB_PAGES.md`.
 
 1. Click the **toolbar icon** — a **movable, resizable window** opens with the shortcut list (if it is already open, the same window is focused).
 2. Click any shortcut; the site opens in a **new background tab** in Chrome (you stay in this panel). The list window **stays visible and focused** so you can open more links; switch to the browser when you want to use the opened site.
-3. Use **Close** / **Cerrar** or the window’s own close control when finished.
-4. Sign in on each website as you normally would.
+3. Optional: **Add my shortcut** — name, URL (e.g. your bank), and section (accounts / subscriptions / shopping). Edit or delete with the buttons next to each personal entry.
+4. Use **Close** / **Cerrar** or the window’s own close control when finished.
+5. Sign in on each website as you normally would.
 
 The extension does not access your accounts—it opens URLs from the built-in list in `shortcuts-data.js` (see `docs/MVP-LINKS.md`) **plus any shortcuts you add yourself** (stored only in `chrome.storage.local` on your device).
 

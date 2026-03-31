@@ -15,6 +15,10 @@ Todas las URLs son **páginas oficiales** abiertas con `chrome.tabs.create`. El 
 | 9 | `amazon_account` | Amazon · Tu cuenta (US) | https://www.amazon.com/your-account |
 | 10 | `amazon_account_es` | Amazon · Tu cuenta (España) | https://www.amazon.es/your-account |
 
+## Atajos del usuario
+
+Los enlaces que el usuario añade desde el panel (nombre, URL, sección) se guardan en `chrome.storage.local` bajo la clave `account-subscription-shortcuts-user-links`. No están en este documento. Para borrar todos: datos de la extensión en el navegador o eliminar entradas con Editar/Borrar en la UI.
+
 ## Notas de mantenimiento
 
 - **Amazon:** incluidos `.com` (US) y `.es` (España). Otras regiones (`amazon.de`, `amazon.co.uk`, …): añadir filas en `shortcuts-data.js` y claves en `panel.js`, o un selector de región en `storage` en el futuro.

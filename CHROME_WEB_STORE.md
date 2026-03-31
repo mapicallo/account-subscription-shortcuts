@@ -48,7 +48,7 @@ What you get:
 
 Privacy:
 • No analytics, no remote servers from this extension
-• `storage` for English/Spanish UI preference; `windows` only to open or focus the shortcut panel window (not for reading your browsing history)
+• `storage` for UI language, optional personal shortcuts you add (label + URL + section), all on-device; `windows` only to open or focus the shortcut panel window (not for reading your browsing history)
 
 This extension does not cancel subscriptions or move money for you. It is a navigator to official sites only.
 ```
@@ -64,7 +64,7 @@ Incluye:
 
 Privacidad:
 • Sin analítica ni servidores propios
-• `storage` para el idioma; `windows` solo para abrir o enfocar la ventana del panel de atajos
+• `storage` para idioma y atajos que añadas tú (solo en el dispositivo); `windows` solo para el panel de atajos
 
 La extensión no cancela suscripciones ni gestiona pagos por ti: solo enlaza a sitios oficiales.
 ```

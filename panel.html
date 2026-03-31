@@ -28,6 +28,30 @@
       </div>
     </header>
 
+    <section class="personal-toolbar" aria-label="Personal shortcuts">
+      <button type="button" id="btnAddPersonal" class="btn-add-personal" data-i18n="addPersonal">Add my shortcut</button>
+      <div id="personalForm" class="personal-form hidden">
+        <h3 id="personalFormTitle" class="personal-form-title"></h3>
+        <div class="form-row">
+          <label for="personalLabel" id="labelForName" data-i18n="formLabel">Name</label>
+          <input type="text" id="personalLabel" autocomplete="off" maxlength="120" />
+        </div>
+        <div class="form-row">
+          <label for="personalUrl" id="labelForUrl" data-i18n="formUrl">URL</label>
+          <input type="url" id="personalUrl" inputmode="url" autocomplete="off" maxlength="2048" placeholder="https://…" />
+        </div>
+        <div class="form-row">
+          <label for="personalCategory" id="labelForCategory" data-i18n="formCategory">Section</label>
+          <select id="personalCategory" aria-describedby="labelForCategory"></select>
+        </div>
+        <p id="personalFormError" class="form-error" role="alert" hidden></p>
+        <div class="form-actions">
+          <button type="button" id="btnSavePersonal" class="btn-primary" data-i18n="savePersonal">Save</button>
+          <button type="button" id="btnCancelPersonal" class="btn-secondary" data-i18n="cancelForm">Cancel</button>
+        </div>
+      </div>
+    </section>
+
     <main id="shortcuts-root" aria-live="polite"></main>
 
     <footer>

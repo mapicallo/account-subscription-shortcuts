@@ -29,11 +29,11 @@ Full steps and alternatives: `docs/GITHUB_PAGES.md`.
 3. Use **Close** / **Cerrar** or the window’s own close control when finished.
 4. Sign in on each website as you normally would.
 
-The extension does not access your accounts—it only opens URLs listed in `shortcuts-data.js` (see `docs/MVP-LINKS.md`).
+The extension does not access your accounts—it opens URLs from the built-in list in `shortcuts-data.js` (see `docs/MVP-LINKS.md`) **plus any shortcuts you add yourself** (stored only in `chrome.storage.local` on your device).
 
 ## Privacy
 
-- Stored locally: **UI language** only (`chrome.storage.local`)
+- Stored locally (`chrome.storage.local`): **UI language**, and optionally **your custom shortcuts** (label + URL + section)
 - **`windows` permission:** used only to open/focus the extension’s shortcut panel window, not to read your browsing data
 - Hosted policy (when published): use `privacy.html` / `privacy-en.html` on GitHub Pages or your chosen host; URL goes in the Chrome Web Store listing
 

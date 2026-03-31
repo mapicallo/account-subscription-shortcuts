@@ -7,7 +7,7 @@ const TRANSLATIONS = {
     language: 'Language',
     note: 'Shortcuts only. This extension does not access your accounts.',
     closeWindow: 'Close',
-    windowHint: 'Move or resize this window as you like. Shortcut links open in a new browser tab.',
+    windowHint: 'Links open in a new background tab in your browser—this window stays on top until you close or minimize it.',
     cat_accounts: 'Account hubs',
     cat_subscriptions: 'Subscriptions & payments',
     cat_shopping: 'Shopping',
@@ -28,7 +28,7 @@ const TRANSLATIONS = {
     language: 'Idioma',
     note: 'Solo atajos. La extensión no accede a tus cuentas.',
     closeWindow: 'Cerrar',
-    windowHint: 'Puedes mover o redimensionar esta ventana. Los enlaces se abren en una pestaña nueva del navegador.',
+    windowHint: 'Los enlaces abren una pestaña nueva en segundo plano en el navegador; esta ventana sigue delante hasta que la cierres o minimices.',
     cat_accounts: 'Cuentas principales',
     cat_subscriptions: 'Suscripciones y pagos',
     cat_shopping: 'Compras',
@@ -64,6 +64,38 @@ function applyTranslations() {
   document.documentElement.lang = currentLang === 'es' ? 'es' : 'en';
 }
 
+/**
+ * Opens `url` in the main browser window without activating that tab, then
+ * refocuses this panel so it does not end up behind Chrome or minimized in the taskbar.
+ */
+async function openShortcutInBackground(url) {
+  const panelWin = await chrome.windows.getCurrent();
+
+  let targetWindowId;
+  try {
+    const lastNormal = await chrome.windows.getLastFocused({ windowTypes: ['normal'] });
+    if (lastNormal?.type === 'normal' && lastNormal.id !== panelWin.id) {
+      targetWindowId = lastNormal.id;
+    }
+  } catch {
+    /* ignore */
+  }
+
+  if (targetWindowId === undefined) {
+    const normals = await chrome.windows.getAll({ windowTypes: ['normal'] });
+    const other = normals.find((w) => w.id !== panelWin.id);
+    if (other) targetWindowId = other.id;
+  }
+
+  if (targetWindowId !== undefined) {
+    await chrome.tabs.create({ windowId: targetWindowId, url, active: false });
+  } else {
+    await chrome.tabs.create({ url, active: false });
+  }
+
+  await chrome.windows.update(panelWin.id, { focused: true });
+}
+
 function renderShortcuts() {
   shortcutsRoot.innerHTML = '';
   if (typeof SHORTCUT_GROUPS === 'undefined' || !Array.isArray(SHORTCUT_GROUPS)) {
@@ -89,7 +121,7 @@ function renderShortcuts() {
       btn.className = 'btn-shortcut';
       btn.textContent = t(item.labelKey);
       btn.addEventListener('click', () => {
-        chrome.tabs.create({ url: item.url });
+        openShortcutInBackground(item.url);
       });
       list.appendChild(btn);
     });

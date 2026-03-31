@@ -25,7 +25,7 @@ Full steps and alternatives: `docs/GITHUB_PAGES.md`.
 ## Usage
 
 1. Click the **toolbar icon** — a **movable, resizable window** opens with the shortcut list (if it is already open, the same window is focused).
-2. Click any shortcut; the site opens in a **new browser tab**. The list window **stays open** so you can use several links without reopening the extension.
+2. Click any shortcut; the site opens in a **new background tab** in Chrome (you stay in this panel). The list window **stays visible and focused** so you can open more links; switch to the browser when you want to use the opened site.
 3. Use **Close** / **Cerrar** or the window’s own close control when finished.
 4. Sign in on each website as you normally would.
 

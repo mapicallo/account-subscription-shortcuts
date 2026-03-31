@@ -37,7 +37,38 @@ Enlaces rápidos a páginas oficiales de cuentas y suscripciones: Google, Micros
 ```
 (125 characters)
 
-### Detailed description (min 250 characters)
+### Detailed description — **paste into “Descripción” / Description** (English, up to 16,000 characters)
+
+Use the block below as the full store description (user-facing; no code references):
+
+```
+Account & Subscription Shortcuts helps you open the official websites you already use for accounts, billing, and subscriptions—without hunting for bookmarks or retyping URLs.
+
+HOW IT WORKS
+Click the extension icon to open a movable panel you can resize and leave open on your desktop. Pick a shortcut: the page opens in a new background tab in Chrome, and the panel stays in front so you can open more links or close the panel when you’re done. You always sign in on the website itself, the same way you already trust those services. This extension does not read your passwords and does not see your activity on those sites.
+
+WHAT’S INCLUDED
+• Google: My Account, subscriptions, and Google Play subscriptions
+• Microsoft account and Apple ID
+• PayPal (automatic payments)
+• Netflix and Spotify account pages
+• Amazon: Your Account (United States and Spain)
+
+YOUR OWN SHORTCUTS
+Add personal links—for example your bank or utility—by choosing a name, pasting the full https address, and picking a section (accounts, subscriptions & payments, or shopping). Edit or delete your entries anytime. They are stored only on your device.
+
+PRIVACY
+• No analytics and no data is sent to the developer’s servers
+• Local storage only: your interface language (English or Spanish) and the shortcuts you create yourself
+• The extension uses the minimum permissions needed to show the panel and save those preferences
+
+IMPORTANT
+This extension does not cancel subscriptions, change plans, process refunds, or move money for you. It only opens public web pages; everything else happens between you and each provider.
+
+If you often manage accounts from a laptop or PC, Account & Subscription Shortcuts keeps those entry points one click away.
+```
+
+### Detailed description — shorter variant (min 250 characters, legacy)
 
 **English:**
 ```

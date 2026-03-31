@@ -6,7 +6,15 @@ Repository: https://github.com/mapicallo/account-subscription-shortcuts
 
 **License:** MIT — see `LICENSE`.
 
-**Store submission:** see `CHROME_WEB_STORE.md`. **GitHub Pages (privacy URL):** see `docs/GITHUB_PAGES.md`. Build production ZIP with `.\create-chrome-package.ps1`.
+**Store submission:** see `CHROME_WEB_STORE.md`. **GitHub Pages:** see `docs/GITHUB_PAGES.md`. Build production ZIP with `.\create-chrome-package.ps1`.
+
+## GitHub Pages (Chrome Web Store privacy URL)
+
+1. Enable **Source: GitHub Actions**: [Repository **Settings → Pages**](https://github.com/mapicallo/account-subscription-shortcuts/settings/pages) (one-time).
+2. After the workflow runs: [Actions](https://github.com/mapicallo/account-subscription-shortcuts/actions) — approve the `github-pages` environment if GitHub asks.
+3. Use this URL in the store: **https://mapicallo.github.io/account-subscription-shortcuts/privacy-en.html**
+
+Full steps and alternatives: `docs/GITHUB_PAGES.md`.
 
 ## Install (development)
 
@@ -37,6 +45,9 @@ The extension does not access your accounts—it only opens URLs listed in `shor
 | `icons/` | Toolbar icons (PNG) |
 | `docs/MVP-LINKS.md` | Human-readable MVP link table |
 | `docs/IMPLEMENTATION_PLAN.md` | Step-by-step plan |
+| `docs/GITHUB_PAGES.md` | Deploy privacy policy to Pages |
+| `.github/workflows/pages.yml` | Pages deploy on push to `main` |
+| `index.html` | Landing on Pages (links to privacy + repo) |
 
 ## Icons
 

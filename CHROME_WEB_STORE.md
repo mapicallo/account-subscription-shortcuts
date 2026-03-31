@@ -21,6 +21,58 @@ Use the English URL in the Chrome Web Store developer dashboard unless you stand
 
 ---
 
+## 1b. Pestaña «Privacidad» en la consola del desarrollador
+
+Rellena los textos con límites típicos (~1.000 caracteres). Si tu formulario aparece en **español**, usa los bloques ES; si pide **inglés**, usa EN.
+
+### Una sola finalidad
+
+**Español (pegar en «Descripción de la finalidad única»):**
+
+```
+Esta extensión ofrece atajos para abrir en el navegador páginas web oficiales de cuentas, facturación y suscripciones (por ejemplo centros de cuenta de servicios conocidos). No inicia sesión por el usuario, no recoge contraseñas, no modifica el contenido de sitios de terceros ni realiza gestiones bancarias o de pago en su nombre. Su función única es abrir en una pestaña las URLs seleccionadas desde un panel y mantener preferencias locales (idioma de la interfaz y atajos opcionales creados por el usuario).
+```
+
+**English (single purpose):**
+
+```
+This extension provides shortcuts to open official account, billing, and subscription web pages in the browser (for example vendor account hubs). It does not sign the user in, does not collect passwords, does not modify third-party sites, and does not perform banking or payments on the user’s behalf. Its sole purpose is to open selected URLs in a tab from a panel and to store local preferences (UI language and optional user-created shortcuts).
+```
+
+### Justificación del permiso `storage`
+
+**Español:**
+
+```
+El permiso storage (chrome.storage.local) guarda únicamente en el dispositivo: (1) el idioma elegido para la interfaz del panel (inglés o español); (2) los atajos personales que el usuario añade de forma opcional (nombre visible, URL y sección). No se envían estos datos a servidores del desarrollador. Sin este permiso no se podrían recordar el idioma ni los atajos creados por el usuario entre sesiones del panel.
+```
+
+**English:**
+
+```
+The storage permission (chrome.storage.local) saves on the device only: (1) the selected UI language for the panel (English or Spanish); (2) optional user-added shortcuts (display name, URL, and section). This data is not sent to the developer’s servers. Without storage, the extension could not persist language or user-created shortcuts between panel sessions.
+```
+
+### Justificación del permiso `windows` (si el formulario lo pide)
+
+**Español:**
+
+```
+Se usa solo para abrir o enfocar la ventana del panel de atajos cuando el usuario hace clic en el icono de la extensión. No se emplea para leer el historial de navegación ni el contenido de otras ventanas.
+```
+
+**English:**
+
+```
+Used only to open or focus the extension’s shortcut panel window when the user clicks the toolbar icon. It is not used to read browsing history or the contents of other windows.
+```
+
+### ¿Código remoto?
+
+Selecciona **No** / **No estoy usando código remoto**. Toda la lógica está en el paquete (service worker `background.js` y página `panel.js`, etc.); no se cargan scripts externos ni WASM alojado fuera del ZIP.
+
+---
+
 ## 2. Store copy
 
 ### Short description (max 132 characters)

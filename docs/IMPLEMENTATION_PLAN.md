@@ -2,149 +2,186 @@
 
 **Repositorio:** https://github.com/mapicallo/account-subscription-shortcuts  
 **Nombre del producto:** Account & Subscription Shortcuts  
-**Referencia de patrón:** extensión tipo [Find my phone](https://github.com/mapicallo/find-my-phone) — MV3, popup, i18n ES/EN, permisos mínimos, `storage` para preferencias.
+**Referencia de patrón:** [Find my phone](https://github.com/mapicallo/find-my-phone) — MV3, popup, i18n, permisos mínimos.
+
+**Versión actual del manifiesto:** `0.1.1` (revisar al publicar en tienda: puede ser `1.0.0` si prefieres primer release “estable”).
 
 ---
 
-## Objetivo del MVP
+## Visión general del roadmap
 
-Extensión de navegador que ofrece **atajos a páginas oficiales** de cuentas, facturación y suscripciones que el usuario **ya utilizaría** (sin agregar credenciales ni “gestionar” servicios por API). UX: **un solo popup** con secciones agrupadas; **selector de idioma** (ES / EN) como en Find my phone.
+| Bloque | Descripción | Estado |
+|--------|-------------|--------|
+| **A — Producto y código MVP** | Manifiesto, popup, datos centralizados, ES/EN, enlaces oficiales | **Hecho** |
+| **B — Cumplimiento y assets** | Privacidad, README, ZIP de tienda, GitHub Pages | **Casi hecho** (falta: Pages activado en GitHub y URL verificada en navegador) |
+| **C — Chrome Web Store** | Cuenta desarrollador, listing, capturas, envío, respuesta al revisor | **Pendiente** |
+| **D — Post-lanzamiento** | Changelog, más locales/enlaces, Edge Add-ons, métricas | **Opcional / backlog** |
 
-**Idioma de la Chrome Web Store:** inglés. **UI:** inglés por defecto + español.
+---
+
+## Objetivo del MVP (sin cambios)
+
+Extensión que ofrece **atajos a páginas oficiales** de cuentas y suscripciones (sin credenciales ni APIs de terceros). **Un popup** con secciones; **selector EN / ES** (predeterminado EN). Comportamiento de clic: **`chrome.tabs.create`** (nueva pestaña).
+
+**Propósito único (single purpose)** para copy y review: *acceso rápido a páginas oficiales de cuenta, facturación y suscripciones; solo enlaces; el usuario inicia sesión en cada sitio.*
 
 ---
 
 ## Fase 0 — Alineación previa al código
 
-| Paso | Acción |
-|------|--------|
-| 0.1 | Redactar **una frase de propósito único** para la tienda (single purpose), coherente con “shortcuts only”. |
-| 0.2 | Definir **lista congelada del MVP**: 6–12 enlaces con etiqueta visible, URL, agrupación (p. ej. “Pagos”, “Tiendas grandes”, “OS / suites”), y nota si abre en **pestaña** o **ventana popup** (si aplica el patrón Find my phone). |
-| 0.3 | Elegir **hosting de la política de privacidad** (p. ej. `https://mapicallo.github.io/account-subscription-shortcuts/privacy.html`) y dominio estable. |
-| 0.4 | Decidir si los enlaces son **estáticos en código** (recomendado MVP) o **lista versionada** en JSON remoto (actualización sin publicar nueva versión; más complejidad y posible fricción en review). |
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 0.1 | Frase de propósito único (tienda + coherente con “shortcuts only”) | Hecho — alineado con `manifest.json` descripción + `CHROME_WEB_STORE.md` |
+| 0.2 | Lista MVP enlaces + agrupación | Hecho — `docs/MVP-LINKS.md`, `shortcuts-data.js` (10 atajos incl. Amazon US/ES) |
+| 0.3 | Hosting política de privacidad | Hecho — `privacy-en.html` / `privacy.html` + Pages vía `docs/GITHUB_PAGES.md` + workflow |
+| 0.4 | Enlaces estáticos vs JSON remoto | Decidido: **estáticos empaquetados** (MVP) |
 
 ---
 
-## Fase 1 — Esqueleto de extensión (Manifest V3)
+## Fase 1 — Esqueleto MV3
 
-| Paso | Acción |
-|------|--------|
-| 1.1 | Crear `manifest.json`: `manifest_version: 3`, `name`, `version`, `description` (inglés), `action.default_popup`, íconos. |
-| 1.2 | Permisos mínimos: típicamente `storage` (idioma / preferencias). Evitar `host_permissions` amplios; los enlaces son `https://` normales abiertos con `chrome.tabs.create` o ventanas. |
-| 1.3 | Añadir `default_locale` o estructura `_locales` si usas `chrome.i18n` para nombre/descripción del manifest (opcional; se puede mantener manifest en EN fijo). |
-| 1.4 | Iconos 16/32/48/128 y un **icono distinguible** del resto de tus extensiones. |
-
-**Criterio de salida:** carga sin errores en `chrome://extensions` (Developer mode), popup abre HTML vacío o placeholder.
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 1.1 | `manifest.json` completo | Hecho |
+| 1.2 | Permisos: solo `storage` | Hecho |
+| 1.3 | `default_locale` / `_locales` | No aplicado — i18n en `popup.js` (mismo patrón que Find my phone); opcional migrar a `_locales` si la tienda exige |
+| 1.4 | Iconos 16 / 32 / 48 / 128 | Hecho — `scripts/generate-icons.ps1` |
 
 ---
 
-## Fase 2 — Popup UI y agrupación
+## Fase 2 — Popup UI
 
-| Paso | Acción |
-|------|--------|
-| 2.1 | Maquetar `popup.html` + CSS: cabecera (nombre + selector idioma), bloques por categoría, lista de botones/enlaces. |
-| 2.2 | Comportamiento al click: `chrome.tabs.create({ url })` (patrón simple) o ventana popup con tamaño fijo si quieres paridad con Find my phone; documentar decisión. |
-| 2.3 | Opcional MVP: **búsqueda filtro** dentro del popup si la lista crece (post-MVP). |
-| 2.4 | Accesibilidad básica: foco visible, `button` o `a` semánticos, contraste legible. |
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 2.1 | Cabecera, secciones, lista de botones | Hecho — render dinámico desde datos |
+| 2.2 | Clic → nueva pestaña | Hecho — `chrome.tabs.create` |
+| 2.3 | Búsqueda / filtro en popup | Pendiente — post-MVP si la lista crece |
+| 2.4 | Accesibilidad básica | Parcial — foco en botones; sin auditoría formal |
 
-**Criterio de salida:** todos los enlaces del MVP abren el destino correcto desde el popup.
-
----
-
-## Fase 3 — Internacionalización (ES / EN)
-
-| Paso | Acción |
-|------|--------|
-| 3.1 | Extraer cadenas a `_locales/en/messages.json` y `_locales/es/messages.json` (o mismo esquema que Find my phone). |
-| 3.2 | Persistir idioma con `chrome.storage.sync` o `local` al cambiar selector; aplicar en `popup` al cargar. |
-| 3.3 | Fallback si falta clave: inglés. |
-
-**Criterio de salida:** cambiar idioma y ver etiquetas de secciones y botones traducidas sin recargar manualmente la extensión (salvo si tu implementación requiere un reload menor del popup, idealmente no).
+**Mejora opcional (Fase 2b):** probar popup con zoom del OS al 125 % / 150 % y ajustar `max-height` / scroll si hace falta.
 
 ---
 
-## Fase 4 — Datos de enlaces (mantenible)
+## Fase 3 — Internacionalización
 
-| Paso | Acción |
-|------|--------|
-| 4.1 | Centralizar definición de atajos en un solo módulo (p. ej. `shortcuts.js` / `shortcuts.ts` export o array en `data/links.json` empaquetado). |
-| 4.2 | Cada entrada: `id`, `url`, `i18nLabelKey`, `categoryKey`, opcional `icon` o `externalIcon` (cuidado con derechos). |
-| 4.3 | Comentario en código o `MAINTENANCE.md` con **cómo actualizar URLs** cuando un proveedor cambie ruta (como `find` de Google). |
-
-**Criterio de salida:** añadir un enlace nuevo = editar datos + mensajes i18n, sin tocar la lógica del popup.
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 3.1 | Cadenas ES / EN | Hecho — objeto `TRANSLATIONS` en `popup.js` |
+| 3.2 | Persistencia idioma | Hecho — `chrome.storage.local` |
+| 3.3 | Fallback inglés | Hecho — función `t()` |
 
 ---
 
-## Fase 5 — Calidad y compatibilidad
+## Fase 4 — Datos mantenibles
 
-| Paso | Acción |
-|------|--------|
-| 5.1 | Probar en **Chrome** y **Edge** (mismo paquete MV3 en la mayoría de casos). |
-| 5.2 | Probar resolución mínima del popup (ancho/alto) y truncado de textos. |
-| 5.3 | Verificar que ningún permiso sobra (auditoría en la página de la extensión). |
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 4.1 | Módulo central de atajos | Hecho — `shortcuts-data.js` |
+| 4.2 | Campos id, url, labelKey, categoryKey | Hecho |
+| 4.3 | Guía de mantenimiento URLs | Hecho — `docs/MVP-LINKS.md` (notas) |
+
+**Opcional:** `docs/MAINTENANCE.md` solo con tabla “proveedor → dónde buscar URL nueva” si el equipo lo encuentra útil.
+
+---
+
+## Fase 5 — Calidad y compatibilidad (QA pre-tienda)
+
+Ejecutar antes del primer envío a la tienda y tras cada cambio grande de UI.
+
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 5.1 | Chrome: cargar unpacked, probar cada atajo | Pendiente — checklist manual |
+| 5.2 | Edge: mismo ZIP o carpeta unpacked | Pendiente |
+| 5.3 | Revisar permisos en `chrome://extensions` | Pendiente — debe mostrar solo **Storage** |
+| 5.4 | Cambiar EN ↔ ES, recargar popup, comprobar textos | Pendiente |
+| 5.5 | Probar ZIP generado por `create-chrome-package.ps1` (no solo desarrollo) | Pendiente |
+
+**Registro sugerido:** anotar fecha y versión en `docs/QA.md` o en la sección inferior de este plan cuando se complete el primer QA.
 
 ---
 
 ## Fase 6 — Publicación Chrome Web Store
 
-| Paso | Acción |
-|------|--------|
-| 6.1 | Redactar `privacy.html`: qué se almacena (idioma), sin analytics si no las hay; sin recolección de historial. |
-| 6.2 | Capturas de pantalla (1280×800 u orientaciones que exija la tienda), texto corto, categoría adecuada. |
-| 6.3 | Empaquetar ZIP sin fuentes innecesarias; `README.md` en GitHub con **build** y **estructura**. |
-| 6.4 | Primera versión sugerida: `0.1.0` o `1.0.0` según tu convención; changelog breve. |
+| Paso | Acción | Estado |
+|------|--------|--------|
+| 6.1 | Textos `privacy` publicados y URL accesible | Pendiente — GitHub Pages + comprobar `privacy-en.html` |
+| 6.2 | Cuenta desarrollador Chrome Web Store (pago único) | Pendiente |
+| 6.3 | Nuevo ítem: subir ZIP, rellenar nombre, descripción corta/larga | Textos en `CHROME_WEB_STORE.md` |
+| 6.4 | Capturas 1280×800 (mín. 1, recomendado 2–3) | Pendiente |
+| 6.5 | Categoría (p. ej. Productividad / Herramientas) | Pendiente |
+| 6.6 | Declaración de permisos / Data safety acorde a “solo storage, idioma” | Pendiente |
+| 6.7 | Enviar a revisión; responder dudas del revisor | Pendiente |
+| 6.8 | Tras aprobación: mismo paquete o bump de versión para fixes | Proceso continuo |
+
+**Versión sugerida para el primer listing público:** si el QA está completo, puedes publicar como **`1.0.0`**; si quieres dejar claro “beta”, mantén `0.x` hasta el primer QA cerrado (`CHROME_WEB_STORE.md` / `README` pueden mencionarlo).
 
 ---
 
-## Fase 7 — Post-MVP (orden sugerido)
+## Fase 7 — Post-MVP (prioridad sugerida)
 
-1. Tercer locale (p. ej. `pt_BR`) si hay tracción o mercado objetivo.  
-2. Sección “Descargas / archivos del navegador” con **límites claros** (no todo `chrome://` es accesible desde extensiones).  
-3. Rotación o A/B de enlaces por región (solo si aporta valor real; evita complejidad prematura).  
-4. Tiles o material promocional alineados con la marca.
+1. **`CHANGELOG.md`** (Keep a Changelog) + bump semver en `manifest.json` en cada envío a la tienda.  
+2. **Locales extra:** `pt_BR` u otros según analytics / feedback.  
+3. **Más TLDs Amazon / retailers** — solo datos + i18n, mismo patrón.  
+4. **Filtro de búsqueda** en popup si hay &gt; ~15 entradas.  
+5. **Descargas / `chrome://`:** documentar límites MV3 antes de implementar cualquier botón.  
+6. **Tiles** 440×280 / 1400×560 para destacar en la tienda.  
+7. **Microsoft Edge Add-ons:** mismo código; proceso de publicación paralelo si compensa.
 
 ---
 
-## Riesgos a vigilar
+## Riesgos
 
 | Riesgo | Mitigación |
 |--------|------------|
-| Nombre/ descripción sugiere **automatización** de cancelaciones o pagos | Lenguaje “shortcuts / official pages only” en tienda y en UI. |
-| Enlaces rotos por cambios del proveedor | Lista centralizada + revisión periódica; versión menor en tienda. |
-| Review por “demasiadas utilidades” | Un propósito claro: **acceso rápido a gestión de cuenta y suscripciones**. |
+| Copy sugiere automatización | “Shortcuts / official pages only” en tienda y UI |
+| URLs rotas | Revisión trimestral o al reporte usuario; nueva versión en tienda |
+| Review “demasiadas utilidades” | Mensaje único: gestión de cuenta y suscripciones mediante enlaces |
 
 ---
 
 ## Dependencias entre fases
 
 ```text
-0 → 1 → 2 → 3 → 4 (4 puede solaparse con 2–3)
-         ↘ 5 → 6
-5 puede empezar en paralelo con 3–4 en cuanto haya enlaces reales.
+0–4 (código) → 5 QA → 6 tienda → 7 evolución
+       ↘ GitHub / Pages en paralelo con 5–6
 ```
 
 ---
 
-## Checklist rápido “release 1.0”
+## Checklist “release 1.0” para la tienda
 
-- [ ] `manifest.json` y permisos revisados  
-- [ ] Popup + todos los enlaces MVP  
-- [ ] ES + EN + persistencia de idioma  
-- [ ] `privacy.html` publicada y URL en la tienda  
-- [ ] README en GitHub + licencia  
-- [ ] ZIP probado en Chrome y Edge  
-- [ ] Subida a Chrome Web Store + respuesta a posibles preguntas del reviewer  
+- [x] `manifest.json` y permisos mínimos  
+- [x] Popup + enlaces MVP (`shortcuts-data.js`)  
+- [x] ES + EN + persistencia de idioma  
+- [x] `privacy.html` / `privacy-en.html` en repo  
+- [x] README, LICENSE, guía tienda, script ZIP  
+- [x] Repo GitHub + workflow Pages (falta confirmar sitio publicado en el navegador)  
+- [ ] QA Chrome + Edge + ZIP de producción  
+- [ ] Capturas y listing completos  
+- [ ] URL de privacidad **HTTPS** accesible sin login  
+- [ ] Publicado en Chrome Web Store  
 
 ---
 
-*Documento vivo: actualizar fechas y alcance del MVP cuando congeles la lista de URLs.*
+## Próximos pasos concretos (orden recomendado)
 
-## Estado de implementación (marzo 2026)
+1. En GitHub: **Settings → Pages** → fuente **GitHub Actions**; comprobar que despliega y abrir `privacy-en.html` en una ventana privada.  
+2. Ejecutar **Fase 5** (tabla QA) y anotar el resultado.  
+3. Generar ZIP: `.\create-chrome-package.ps1`.  
+4. Hacer **capturas** del popup (EN y ES) según `CHROME_WEB_STORE.md`.  
+5. Crear / usar ítem en **Chrome Web Store Developer Dashboard**, pegar textos, privacidad, subir ZIP.  
+6. (Opcional) Subir `1.0.0` en `manifest.json` en el commit que etiquetes como “store release”.  
+7. Tras publicar: añadir **CHANGELOG** y enlace a la tienda en `README.md`.
 
-- [x] MVP enlaces documentados: `docs/MVP-LINKS.md`
-- [x] `shortcuts-data.js` + popup dinámico + i18n ES/EN (predeterminado EN)
-- [x] `privacy.html` / `privacy-en.html`
-- [x] Iconos PNG (`scripts/generate-icons.ps1`)
-- [x] `LICENSE` (MIT), `CHROME_WEB_STORE.md`, `create-chrome-package.ps1`
-- [ ] Publicar política en GitHub Pages (`docs/GITHUB_PAGES.md`) y enlace en Chrome Web Store
-- [ ] Primer ZIP y envío a la tienda
+---
+
+*Documento vivo. Última revisión del plan: marzo 2026.*
+
+## Historial breve de implementación
+
+- [x] MVP enlaces: `docs/MVP-LINKS.md`, Amazon US + ES  
+- [x] Código: `shortcuts-data.js`, `popup.*`, `manifest.json`  
+- [x] Privacidad ES/EN, `index.html`, workflow GitHub Pages  
+- [x] `LICENSE`, `CHROME_WEB_STORE.md`, `create-chrome-package.ps1`, `docs/GITHUB_PAGES.md`  
+- [x] README con enlaces a Settings/Actions de GitHub  
+- [ ] Pages verificado en producción + primera publicación en tienda  

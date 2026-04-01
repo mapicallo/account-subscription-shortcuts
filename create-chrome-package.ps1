@@ -16,6 +16,7 @@ if (-not $version) {
 $items = @(
     'manifest.json',
     'background.js',
+    'brand',
     'panel.html',
     'panel.css',
     'panel.js',

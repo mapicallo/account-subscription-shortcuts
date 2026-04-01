@@ -35,7 +35,9 @@ const TRANSLATIONS = {
     link_netflix_account: 'Netflix — Account',
     link_spotify_account: 'Spotify — Account',
     link_amazon_account: 'Amazon — Your account (US)',
-    link_amazon_account_es: 'Amazon — Your account (Spain)'
+    link_amazon_account_es: 'Amazon — Your account (Spain)',
+    brandFooterAria: 'AI4Context — open website',
+    brandByPrefix: 'by'
   },
   es: {
     title: 'Accesos a cuenta y suscripciones',
@@ -68,7 +70,9 @@ const TRANSLATIONS = {
     link_netflix_account: 'Netflix — Cuenta',
     link_spotify_account: 'Spotify — Cuenta',
     link_amazon_account: 'Amazon — Tu cuenta (EE. UU.)',
-    link_amazon_account_es: 'Amazon — Tu cuenta (España)'
+    link_amazon_account_es: 'Amazon — Tu cuenta (España)',
+    brandFooterAria: 'AI4Context — abrir sitio web',
+    brandByPrefix: 'por'
   }
 };
 
@@ -102,6 +106,10 @@ function applyTranslations() {
     const key = el.getAttribute('data-i18n');
     if (t(key)) el.textContent = t(key);
   });
+  const brandFooter = document.getElementById('a4c-brand-footer');
+  if (brandFooter) brandFooter.setAttribute('aria-label', t('brandFooterAria'));
+  const byPrefix = document.getElementById('a4c-brand-by-prefix');
+  if (byPrefix) byPrefix.textContent = t('brandByPrefix');
   document.documentElement.lang = currentLang === 'es' ? 'es' : 'en';
   fillCategorySelect();
   if (personalForm && !personalForm.classList.contains('hidden') && personalFormTitle) {

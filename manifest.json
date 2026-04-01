@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Account & Subscription Shortcuts",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Quick links to official account & subscription pages. Opens in a new tab. Local-only: language and shortcuts you add.",
   "permissions": ["storage", "windows"],
   "background": {

@@ -367,3 +367,63 @@ footer {
   font-variant-numeric: tabular-nums;
   user-select: none;
 }
+
+/* AI4Context footer — EB variant; dark strip so light mark asset reads on light panel */
+footer .a4c-brand-footer--strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: calc(100% + 32px);
+  margin: 12px -16px -12px;
+  padding: 12px 16px;
+  box-sizing: border-box;
+  background: #18181b;
+  color: #e8eef7;
+  text-decoration: none;
+  font-family: inherit;
+  line-height: 1.2;
+}
+
+footer .a4c-brand-footer--strip:hover {
+  opacity: 0.94;
+}
+
+footer .a4c-brand-footer--strip:focus-visible {
+  outline: 2px solid #2dd4bf;
+  outline-offset: 2px;
+}
+
+footer .a4c-brand-footer__accent {
+  width: 3px;
+  align-self: stretch;
+  min-height: 22px;
+  background: #3dd9c0;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+footer .a4c-brand-footer__mark {
+  height: 22px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+footer .a4c-brand-footer__copy {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+footer .a4c-brand-footer__by {
+  font-size: 13px;
+  font-weight: 400;
+  color: #a1a1aa;
+}
+
+footer .a4c-brand-footer__name {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e8eef7;
+}
